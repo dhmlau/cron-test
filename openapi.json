@@ -1,0 +1,497 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "cron-test",
+    "version": "1.0.0",
+    "description": "cron-test",
+    "contact": {}
+  },
+  "paths": {
+    "/customers/count": {
+      "get": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "count",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Customer.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Customer>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "CustomerController.count"
+      }
+    },
+    "/customers/{id}": {
+      "put": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Customer PUT success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "CustomerController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Customer PATCH success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "CustomerController.updateById"
+      },
+      "get": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "findById",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "CustomerController.findById"
+      },
+      "delete": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Customer DELETE success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "CustomerController.deleteById"
+      }
+    },
+    "/customers": {
+      "post": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "create",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCustomer"
+              }
+            }
+          }
+        },
+        "operationId": "CustomerController.create"
+      },
+      "patch": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Customer.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Customer>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPartial"
+              }
+            }
+          }
+        },
+        "operationId": "CustomerController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "CustomerController",
+        "x-operation-name": "find",
+        "tags": [
+          "CustomerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Customer model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomerWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "CustomerController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Customer": {
+        "title": "Customer",
+        "type": "object",
+        "properties": {
+          "custid": {
+            "type": "string"
+          },
+          "custname": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "custid"
+        ],
+        "additionalProperties": false
+      },
+      "NewCustomer": {
+        "title": "NewCustomer",
+        "type": "object",
+        "description": "(tsType: Omit<Customer, 'custid'>, schemaOptions: { title: 'NewCustomer', exclude: [ 'custid' ] })",
+        "properties": {
+          "custname": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Customer, 'custid'>"
+      },
+      "CustomerWithRelations": {
+        "title": "CustomerWithRelations",
+        "type": "object",
+        "description": "(tsType: CustomerWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "custid": {
+            "type": "string"
+          },
+          "custname": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "custid"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "CustomerWithRelations"
+      },
+      "CustomerPartial": {
+        "title": "CustomerPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Customer>, schemaOptions: { partial: true })",
+        "properties": {
+          "custid": {
+            "type": "string"
+          },
+          "custname": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Customer>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Customer.Fields": {
+        "title": "Customer.Fields",
+        "type": "object",
+        "properties": {
+          "custid": {
+            "type": "boolean"
+          },
+          "custname": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Customer.Filter": {
+        "type": "object",
+        "title": "Customer.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fields": {
+            "$ref": "#/components/schemas/Customer.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Customer>"
+      },
+      "Customer.Filter1": {
+        "type": "object",
+        "title": "Customer.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "where": {
+            "title": "Customer.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "$ref": "#/components/schemas/Customer.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Customer>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}
